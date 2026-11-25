@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PyScratch</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/blockly@10.4.3/blockly_compressed.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20 2C10 2 9 6 9 10v5h12v2H7C3 17 2 21 2 25s1 8 5 8h5v-5c0-3 2-5 5-5h8c3 0 4-3 4-4v-6c0-5-4-11-9-11z" fill="#3776AB"/>
+      <path d="M20 38c10 0 11-4 11-8v-5H19v-2h14c4 0 5-4 5-8s-1-8-5-8h-5v5c0 3-2 5-5 5h-8c-3 0-4 3-4 4v6c0 5 4 11 9 11z" fill="#FFD43B"/>
+    </svg>
+    <span>PyScratch</span>
+  </div>
+  <nav>
+    <button id="navHome">Home</button>
+    <button id="navProjects">Projects</button>
+    <button id="navCommunity">Community</button>
+    <button id="navSites">Websites</button>
+    <button id="navHelp">Help</button>
+  </nav>
+  <input id="projName" class="projname" maxlength="40" aria-label="Project name">
+  <button id="btnAccount" class="avatar" aria-label="Account">?</button>
+</header>
+
+<main class="app">
+  <section class="left">
+    <div class="tabs">
+      <button class="tab active">Code</button>
+      <button class="tab" disabled>Costumes</button>
+      <button class="tab" disabled>Sounds</button>
+      <button class="tab pytab">Python</button>
+    </div>
+    <div id="blockly"></div>
+    <div class="pypanel">
+      <div class="pyhead">
+        <b>Python Code</b><span id="pyStatus"></span>
+        <button id="pyToggle">Collapse</button>
+      </div>
+      <pre id="pycode"></pre>
+      <div id="pyerr"></div>
+    </div>
+  </section>
+
+  <section class="right">
+    <div class="stagebar">
+      <button id="green" class="circle flag" aria-label="Green flag: run">⚑</button>
+      <button id="stop" class="circle stopbtn" aria-label="Stop">⬤</button>
+    </div>
+    <canvas id="stage" width="480" height="360"></canvas>
+    <div class="ctrl">
+      <label>Sprite<input id="sName" maxlength="20"></label>
+      <label>x<input id="sX" type="number"></label>
+      <label>y<input id="sY" type="number"></label>
+      <label>Size<input id="sSize" type="number" min="5"></label>
+      <label>Direction<input id="sDir" type="number"></label>
+    </div>
+    <div id="sprites" class="sprites"></div>
+    <div class="runbar">
+      <button id="run" class="run">Run ▶</button>
+      <button id="save" class="save">Save Project</button>
+      <button id="publish" class="save">Publish</button>
+      <button id="export" class="save">Export</button>
+    </div>
+  </section>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="box">
+    <div class="boxhead"><h2 id="mTitle"></h2><button id="mClose" aria-label="Close">✕</button></div>
+    <div id="mBody"></div>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
