@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PyScratch Websites</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .app { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .prev { display: flex; flex-direction: column; background: #F4F6FA; padding: 10px; gap: 10px; min-height: 0; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; }
+  #preview { flex: 1; width: 100%; min-height: 300px; border: 2px solid var(--line); border-radius: 14px; background: #fff; }
+  .linkbox { background: #fff; border-radius: 14px; padding: 10px; font-size: 13px; word-break: break-all; }
+  .backlink { color: var(--ink); font-weight: 700; text-decoration: none; }
+  @media (max-width: 800px) {
+    .app { grid-template-columns: 1fr; }
+    .prev { order: -1; }
+    #preview { min-height: 45vh; }
+  }
+</style>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blockly@10.4.3/blockly_compressed.js"></script>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand"><a href="index.html" class="backlink">← Editor</a><span>Websites</span></div>
+  <input id="siteName" class="projname" maxlength="40" aria-label="Website name">
+  <button id="btnAccount" class="avatar" aria-label="Account" title="Log in on the Editor page">?</button>
+</header>
+
+<main class="app">
+  <section class="left">
+    <div id="blockly"></div>
+  </section>
+  <section class="prev">
+    <div class="bar">
+      <button id="save">Save</button>
+      <button id="download">Download HTML</button>
+      <button id="publish" class="run" style="font-size:16px;padding:10px 16px">Publish</button>
+    </div>
+    <div id="linkbox" class="linkbox" hidden></div>
+    <iframe id="preview" title="Live preview" sandbox=""></iframe>
+  </section>
+</main>
+
+<script src="builder.js"></script>
+</body>
+</html>
